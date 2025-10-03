@@ -1,0 +1,11 @@
+CREATE TABLE domains (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255) UNIQUE NOT NULL
+);
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    password_hash TEXT NOT NULL,
+    domain_id INT REFERENCES domains(id) ON DELETE CASCADE,
+    created_at TIMESTAMP DEFAULT NOW()
+);

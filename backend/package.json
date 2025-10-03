@@ -1,0 +1,19 @@
+{
+  "name": "sogo-like-backend",
+  "version": "1.0.0",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "body-parser": "^1.20.2",
+    "jsonwebtoken": "^9.0.2",
+    "imap-simple": "^5.1.0",
+    "nodemailer": "^6.9.3",
+    "node-fetch": "^3.3.2",
+    "pg": "^8.11.1",
+    "dotenv": "^16.3.1"
+  }
+}
