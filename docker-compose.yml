@@ -1,0 +1,51 @@
+version: "3.9"
+services:
+  email:
+    build: .
+    container_name: email-server
+    hostname: ${DOMAIN}
+    environment:
+      - DOMAIN=${DOMAIN}
+      - MAIL_DOMAIN=${MAIL_DOMAIN}
+      - SSL_EMAIL=${SSL_EMAIL}
+      # Optional Radicale auth user/pass
+      - RADICALE_USER=${RADICALE_USER:-}
+      - RADICALE_PASS=${RADICALE_PASS:-}
+    ports:
+      - "25:25"       # SMTP
+      - "465:465"     # SMTPS (if configured)
+      - "587:587"     # Submission
+      - "110:110"     # POP3
+      - "995:995"     # POP3S
+      - "143:143"     # IMAP
+      - "993:993"     # IMAPS
+      - "4190:4190"   # Sieve
+      - "11334:11334" # Rspamd web
+      - "5232:5232"   # Radicale
+      # Optionally expose 80/443 for certbot standalone(use a reverse proxy instead)
+      # - "80:80"
+      # - "443:443"
+    volumes:
+      - postfix_data:/var/spool/postfix
+      - postfix_etc:/etc/postfix
+      - dovecot_data:/var/lib/dovecot
+      - dovecot_etc:/etc/dovecot
+      - rspamd_data:/var/lib/rspamd
+      - clamav_db:/var/lib/clamav
+      - opendkim_keys:/etc/opendkim/keys
+      - radicale_data:/var/lib/radicale/collections
+      - letsencrypt:/etc/letsencrypt
+    restart: unless-stopped
+
+volumes:
+  postfix_data: {}
+  postfix_etc: {}
+  dovecot_data: {}
+  dovecot_etc: {}
+  rspamd_data: {}
+  clamav_db: {}
+  opendkim_keys: {}
+  radicale_data: {}
+  letsencrypt: {}
+
+

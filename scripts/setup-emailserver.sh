@@ -15,12 +15,12 @@ echo "Starting email server setup..."
 # ===============================
 # Variables (edit these)
 # ===============================
-DOMAIN="mail.example.com"       # Mail server hostname
-MAIL_DOMAIN="example.com"       # Email domain
-DB_ROOT_PASS="ChangeRootPass"
-MAIL_DB_PASS="ChangeMailPass"
+DOMAIN="mail.tridevsoft.com"       # Mail server hostname
+MAIL_DOMAIN="tridevsoft.com"       # Email domain
+DB_ROOT_PASS="MyDBPass"
+MAIL_DB_PASS="MyDbPass"
 MAIL_USER="postfix"
-SSL_EMAIL="you@example.com"
+SSL_EMAIL="admin@tridevsoft.com"
 
 # ===============================
 # Update system
